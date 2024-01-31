@@ -2,20 +2,20 @@
 using namespace std;
 
 template <typename T>
-T sum(T* list, int size, string type) {
-    if (type != "string") {
-        T result_num = 0;
-        for (int i=0; i<size; i++) {
-            result_num += list[i];
-        }
-        return result_num;   
-    } else {
-         T result_str{};
-        for (int i=0; i<size; i++) {
-            result_str += list[i];
-        }
-        return result_str;  
+T sum(T* list, int size) {
+    T result_num = 0;
+    for (int i=0; i<size; i++) {
+        result_num += list[i];
     }
+    return result_num;   
+}
+template<>
+string sum(string* list, int size) {
+    string result_str{};
+    for (int i=0; i<size; i++) {
+        result_str += list[i];
+    }
+    return result_str;  
 }
 
 int main() {
@@ -31,7 +31,7 @@ int main() {
         cin >> z;
         Z[i]= z;
     }
-    cout << "Сумма всех элементов: " << sum(Z, n, "int") << endl; 
+    cout << "Сумма всех элементов: " << sum(Z, n) << endl; 
     
     cout << "Создайте список вещественных чисел" << endl;
     cout << "Количество элементов: " << endl;
@@ -44,7 +44,7 @@ int main() {
         cin >> r;
         R[i]= r;
     }
-    cout << "Сумма всех элементов: " << sum(R, m, "double") << endl; 
+    cout << "Сумма всех элементов: " << sum(R, m) << endl; 
     
     cout << "Создайте список строк" << endl;
     cout << "Количество элементов: " << endl;
@@ -57,7 +57,7 @@ int main() {
         cin >> s;
         S[i]= s;
     }
-    cout << "Сумма всех элементов: " << sum(S, k, "string") << endl; 
+    cout << "Сумма всех элементов: " << sum(S, k) << endl; 
     
     delete[] Z;
     delete[] R;
